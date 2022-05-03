@@ -1,4 +1,5 @@
-import {navigateTo} from "../support/page_object/navigationPage";
+import navigationPage from '../support/page_object/navigationPage'
+import clientPage from "../support/page_object/clientPage"
 
 
 
@@ -36,26 +37,23 @@ describe('Log in', () => {
 describe('Base page nav-bar links are correct ', ()=> {
   it('Nav-bar links are correct', () => {
     cy.login()
-    navigateTo.clientPageIsOpen()
+    navigationPage.clientPageIsOpen()
     cy.goToProfilePage()
-    navigateTo.ordersPageIsOpen()
+    navigationPage.ordersPageIsOpen()
     cy.goToProfilePage()
-    navigateTo.estimatesPageIsOpen()
+    navigationPage.estimatesPageIsOpen()
     cy.goToProfilePage()
-    navigateTo.invoicesPageIsOpen()
+    navigationPage.invoicesPageIsOpen()
     cy.goToProfilePage()
-    navigateTo.paymentsPageIsOpen()
+    navigationPage.paymentsPageIsOpen()
     cy.goToProfilePage()
-    navigateTo.schedulePageIsOpen()
+    navigationPage.schedulePageIsOpen()
   })
 })
 describe('Clients', ()=>{
   it.only('Successful client creation', ()=> {
     cy.login()
-    cy.get('[href="/client"]')
-      .click()
-    cy.get('[data-qa="create-client-button"]')
-      .click()
-    cy.get('[data-qa="page-title"]').should('contain', 'Create New Client')
+    clientPage.createClient()
+
   })
 })

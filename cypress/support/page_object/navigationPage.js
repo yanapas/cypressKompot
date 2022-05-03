@@ -1,5 +1,4 @@
-
-export class NavigationPage {
+class NavigationPage {
 
   clientPageIsOpen(){
     cy.get('[href="/client"]')
@@ -47,4 +46,4 @@ export class NavigationPage {
 
 }
 
-export const navigateTo = new NavigationPage()
+export default new NavigationPage()
