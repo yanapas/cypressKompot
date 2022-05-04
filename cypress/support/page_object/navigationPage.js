@@ -29,19 +29,22 @@ class NavigationPage {
       .click()
     cy.get('[data-qa="page-title"]')
       .should('contain', 'Invoices')
-    cy.get('[type="button"]').contains('Create Invoice').should('be.visible')
+    cy.get('[type="button"]').contains('Create Invoice')
+      .should('be.visible')
   }
   paymentsPageIsOpen(){
     cy.get('[href="/payment"]')
       .click()
     cy.get('[data-qa="page-title"]')
       .should('contain', 'Payments')
-    cy.get('[type="button"]').contains('Create Payment').should('be.visible')
+    cy.get('[type="button"]').contains('Create Payment')
+      .should('be.visible')
   }
   schedulePageIsOpen(){
     cy.get('[href="/schedule/calendar"]')
       .click()
-    cy.get('[href="/schedule/calendar"]').should('be.visible')
+    cy.get('[href="/schedule/calendar"]')
+      .should('be.visible')
   }
 
 }

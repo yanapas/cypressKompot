@@ -51,7 +51,7 @@ describe('Base page nav-bar links are correct ', ()=> {
   })
 })
 describe('Clients', ()=>{
-  it.only('Successful client creation', ()=> {
+  it('Successful client creation', ()=> {
     cy.login()
     clientPage.createClient()
 
