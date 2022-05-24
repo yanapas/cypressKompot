@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "cy:open": "npx cypress open"
+    "cy:open": "npx cypress open",
+    "cy:run": "npx cypress run --spec cypress/integration/*.spec.js",
+    "cy:run:dashbord": "npx cypress run --spec cypress/integration/*.spec.js --record --key 801342b2-99f3-46f7-ba01-a02e2bbbbcd1"
   },
   "keywords": [],
   "author": "",

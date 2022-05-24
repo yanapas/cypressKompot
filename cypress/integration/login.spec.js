@@ -7,34 +7,13 @@ describe('Log in', () => {
   it('Log in  with valid credentials', () => {
     cy.login()
   })
+})
 
-  it('Log in  with invalid email', () => {
-    cy.visit('/')
-    cy.get('[data-qa="login"]')
-      .click()
-    cy.get('[id="email"]')
-      .type('wrong@gmail.com')
-    cy.get('[id="password"]')
-      .type('Qwerty12')
-    cy.get('[type="submit"]').contains('Log in').click()
-
-    cy.get('.ant-notification-notice-message').should('contain', 'Email is not registered')
-  })
-
-  it('Log in  with invalid password', () => {
-    cy.visit('/')
-    cy.get('[data-qa="login"]')
-      .click()
-    cy.get('[id="email"]')
-      .type('test@gmail.com')
-    cy.get('[id="password"]')
-      .type('Qwerty')
-    cy.get('[type="submit"]').contains('Log in').click()
-
-    cy.get('.ant-notification-notice-message').should('contain', 'Incorrect password')
-  })
+beforeEach(()=>{
+  Cypress.Cookies.preserveOnce('connect.sid', 'user_auth')
 })
 describe('Base page nav-bar links are correct ', ()=> {
+
   it('Nav-bar links are correct', () => {
     cy.login()
     navigationPage.clientPageIsOpen()
@@ -49,11 +28,25 @@ describe('Base page nav-bar links are correct ', ()=> {
     cy.goToProfilePage()
     navigationPage.schedulePageIsOpen()
   })
-})
-describe('Clients', ()=>{
-  it('Successful client creation', ()=> {
+  it('Nav-bar hamburger menu has correct elements and navigates to the right pages', ()=> {
     cy.login()
-    clientPage.createClient()
-
+    navigationPage.hamburgerDropdown()
+    cy.dropdownOpen()
+    navigationPage.workersPageIsOpen()
+    cy.dropdownOpen()
+    navigationPage.addressesPageIsOpen()
+    cy.dropdownOpen()
+    navigationPage.vendorsPageIsOpen()
+    cy.dropdownOpen()
+    navigationPage.productsPageIsOpen()
+    cy.dropdownOpen()
+    navigationPage.purchaseOrdersPageIsOpen()
+    cy.dropdownOpen()
+    navigationPage.absencesPageIsOpen()
+  })
+  it('Right-side nav-bar links navigate to the right pages', ()=>{
+    cy.login()
+    navigationPage.informationPageIsOpen()
+    navigationPage.settingsPageIsOpen()
   })
 })

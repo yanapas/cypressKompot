@@ -1,4 +1,4 @@
-//elements
+
 
 class LoginPage{
   get emailInput() { return cy.get('[id="email"]') }

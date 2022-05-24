@@ -1,0 +1,14 @@
+{
+  "client":
+  {
+  "firstName": "Anakin",
+  "lastName": "Skywalker",
+  "companyName": "Jedi",
+  "phoneNumber": "2337111422",
+  "email": "bestjedi@gmail.com",
+  "addressStreet": "1 Main Street",
+  "addressCity": "Tatooin",
+  "state": "California",
+  "zipCode": "12345"
+  }
+}

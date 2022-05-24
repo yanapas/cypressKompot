@@ -1,4 +1,5 @@
-class NavigationPage {
+
+export class NavigationPage {
 
   clientPageIsOpen(){
     cy.get('[href="/client"]')
@@ -46,7 +47,76 @@ class NavigationPage {
     cy.get('[href="/schedule/calendar"]')
       .should('be.visible')
   }
+  hamburgerDropdown(){
+    cy.get('#top-menu .ant-dropdown-trigger').click()
+    const hamburger = ['Workers', 'Addresses', 'Vendors', 'Products', 'Purchase Orders', 'Absences'];
+      for(let i =0; i < hamburger.length; i++){
+        cy.get('.ant-dropdown-menu-title-content').contains(hamburger[i])
+      }
+  }
+  workersPageIsOpen(){
+    cy.get('[href="/worker"]')
+      .click()
+    cy.get('[data-qa="page-title"]')
+      .should('be.visible')
+    cy.get('[type="button"]').contains('Invite Worker')
+      .should('be.visible')
+  }
+  addressesPageIsOpen(){
+    cy.get('[href="/address"]')
+      .click()
+    cy.get('.h4').contains('Addresses')
+      .should('be.visible')
+  }
+  vendorsPageIsOpen(){
+    cy.get('[href="/vendor"]')
+      .click()
+    cy.get('[data-qa="page-title"]')
+      .should('be.visible')
+    cy.get('[type="button"]').contains('Add New Vendor')
+      .should('be.visible')
+  }
+  productsPageIsOpen(){
+    cy.get('[href="/product"]')
+      .click()
+    cy.get('[data-qa="page-title"]').contains('Products')
+      .should('be.visible')
+    cy.get('[type="button"]').contains('New Product')
+      .should('be.visible')
+  }
+  purchaseOrdersPageIsOpen(){
+    cy.get('[href="/purchaseOrder"]')
+      .click()
+    cy.get('.h4').contains('Purchase Order Dashboard')
+      .should('be.visible')
+    cy.get('[type="button"]').contains('ADD NEW PURCHASE ORDER')
+      .should('be.visible')
+  }
+  absencesPageIsOpen(){
+    cy.get('[href="/absence"]')
+      .click()
+    cy.get('h4').contains('Absences')
+      .should('be.visible')
+    cy.get('[type="button"]').contains('New Absence')
+      .should('be.visible')
+  }
+  informationPageIsOpen(){
+    cy.get('[href="/info"]')
+      .click()
+    cy.get('[data-qa="page-title"]').contains('Information')
+      .should('be.visible')
+    cy.get('h1')
+      .should('have.text', 'Contact us')
+  }
+  settingsPageIsOpen(){
+    cy.get('[href="/settings/companyAccount"]')
+      .click()
+    cy.get('h5').contains('Company Information')
+      .should('be.visible')
+    cy.get('[data-icon="user"]')
+      .should('be.visible')
 
+  }
 }
 
-export default new NavigationPage()
+export const navigateTo = new NavigationPage()
